@@ -6,6 +6,7 @@ import styles from './Form.module.css';
 import Button from './Button';
 import BackButton from './BackButton';
 import Message from '../components/Message';
+import Spinner from '../components/Spinner';
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -27,6 +28,8 @@ function Form() {
   const [geocodingError, setGeocodingError] = useState('');
 
   useEffect(() => {
+    if (!lat && !lng) return;
+
     async function fetchCityData() {
       try {
         setIsLoadingGeocoding(true);
@@ -44,12 +47,15 @@ function Form() {
       } catch (err) {
         setGeocodingError(err.message);
       } finally {
-        if (isLoadingGeocoding) setIsLoadingGeocoding(false);
+        setIsLoadingGeocoding(false);
       }
     }
     fetchCityData();
   }, [lat, lng, setIsLoadingGeocoding]);
 
+  if (isLoadingGeocoding) return <Spinner />;
+  if (!lat && !lng)
+    return <Message message='Start by clicking somewhere on the map.' />;
   if (geocodingError) return <Message message={geocodingError} />;
 
   return (
