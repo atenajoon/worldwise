@@ -84,7 +84,7 @@ function CitiesProvider({ children }) {
         dispatch({ type: 'city/deleted', payload: data });
       } catch (err) {
         dispatch({
-          type: 'cities/loaded',
+          type: 'rejected',
           payload: 'There was an error loading data...',
         });
       }
