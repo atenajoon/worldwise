@@ -5,6 +5,7 @@
 # WorldWise
 
 WorldWise is a Single Page Application (SPA) that allows users to register and track all the cities they have traveled to. The app automatically associates each city with its corresponding country. Users can navigate between pages, search for cities on a map to add them to their list, delete cities, or find their current location using the browser's GeoLocation feature.
+_Note: Pricing and Product pages are just added to demonstrate the SPA and navigation flow. They will be changed to Travel Tips and Memories pages in the future._
 
 ## Features
 - **User Registration:** Register an account to keep track of your traveled cities. 
